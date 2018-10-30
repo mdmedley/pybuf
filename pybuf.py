@@ -13,8 +13,14 @@ from stat import S_IWRITE
 init_filename = '__init__.py'
 
 
-def modularize(source, destination):
+def modularize(source, destination, filename=None):
     """
+    This method will call protoc on all proto files in <source> directory to generate
+    the python code to encode/decode protobuf definitions
+
+    :param source: Directory containing .proto files (Required)
+    :param destination: Directory where generated python modules will be saved (Required)
+    :param filename: Specific proto file to be call protoc on (Optional)
     """
     source = abspath(source)
     destination = abspath(destination)
@@ -36,7 +42,10 @@ def modularize(source, destination):
     # Create destination directory
     mkdir(destination)
 
-    cmd = 'protoc --python_out={} *.proto'.format(destination)
+    if filename:
+        cmd = 'protoc --python_out={} {}'.format(destination, filename)
+    else:
+        cmd = 'protoc --python_out={} *.proto'.format(destination)
 
     subprocess.call(cmd, shell=True, cwd=source)
 

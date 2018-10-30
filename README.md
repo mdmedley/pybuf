@@ -2,7 +2,7 @@
 Modularize Protocol Buffer Compiler generated code for use within your package.
 
 ### Version
-v1.0
+v1.1
 
 
 ### Installation
@@ -16,7 +16,8 @@ pip install pybuf
 from pybuf import modularize
 
 
-modularize(source='/path/to/proto/files/', destination='/path/to/module/')
+modularize(source='/path/to/proto/files/directory/', destination='/path/to/module/', filename='specific_file.proto')
+# filename param is optional
 ```
 
 
