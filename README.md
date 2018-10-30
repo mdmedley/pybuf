@@ -2,7 +2,7 @@
 Modularize Protocol Buffer Compiler generated code for use within your package.
 
 ### Version
-v1.1
+v1.1.1
 
 
 ### Installation

@@ -49,7 +49,10 @@ def modularize(source, destination, filename=None):
 
     subprocess.call(cmd, shell=True, cwd=source)
 
-    proto_files = listdir(source)
+    if filename:
+        proto_files = [filename]
+    else:
+        proto_files = listdir(source)
     modules = []
 
     for name in proto_files:
